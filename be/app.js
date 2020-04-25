@@ -34,12 +34,13 @@ app.use(function(err, req, res, next) {
   res.send({ msg: err.message })
 });
 
-module.exports = app;
-
 const mongoose = require('mongoose')
 const User = require('./models/users')
 
-mongoose.connect('mongodb://localhost:27017/nemv', { useNewUrlParser: true }, (err) => {
+const cfg = require('../config')
+console.log(cfg)
+
+mongoose.connect(cfg.dbUrl, { useNewUrlParser: true }, (err) => {
   if (err) return console.error(err)
   console.log('mongoose connected!')
 })
@@ -66,3 +67,5 @@ mongoose.connect('mongodb://localhost:27017/nemv', { useNewUrlParser: true }, (e
 //   })
 //   .then(r => console.log(r))
 //   .catch(e => console.error(e))
+
+module.exports = app;
