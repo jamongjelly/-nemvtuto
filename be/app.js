@@ -35,3 +35,34 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
+
+const mongoose = require('mongoose')
+const User = require('./models/users')
+
+mongoose.connect('mongodb://localhost:27017/nemv', { useNewUrlParser: true }, (err) => {
+  if (err) return console.error(err)
+  console.log('mongoose connected!')
+})
+
+// User.create({ name: '김쌈무' })
+//   .then(r => console.log(r))
+//   .catch(e => console.error(e))
+// User.find()
+//   .then(r => console.log(r))
+//   .catch(e => console.error(e))
+// User.updateOne({ _id: '5ea2ca288fd8ea5528dd83d0' }, { $set: { age: 21 } })
+//   .then(r => {
+//     console.log(r)
+//       console.log('updated')
+//     return User.find()
+//   })
+//   .then(r => console.log(r))
+//   .catch(e => console.error(e))
+// User.deleteOne({ name: '김쌈무' })
+//   .then(r => {
+//     console.log(r)
+//       console.log('updated')
+//     return User.find()
+//   })
+//   .then(r => console.log(r))
+//   .catch(e => console.error(e))
